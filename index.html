@@ -1,28 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>kiwiprojekt</title>
-<style>
-	.center {
-		position: fixed;
-		top:0;
-		bottom:0;
-		left:0;
-		right:0;
-	}
-	.center img {
-		margin: 0;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		-ms-transform: translate(-50%, -50%);
-		transform: translate(-50%, -50%);
-	}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kiwiprojekt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            background: #f6f8fa;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .logo {
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #57606a;
+            font-size: 1.1rem;
+        }
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .project-card {
+            background: white;
+            border: 2px solid #e2e92f;
+            border-radius: 6px;
+            padding: 1.5rem;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+        .project-card:hover {
+            border-color: #9ce72e;
+        }
+        .project-info {
+            flex: 1;
+        }
+        .project-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.25rem;
+        }
+        .project-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #00a900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+        }
+        .project-name:hover {
+            color: #9ce72e;
+        }
+        .project-description {
+            color: #57606a;
+            margin-bottom: 0.5rem;
+        }
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .project-link {
+            font-size: 0.875rem;
+            color: #24292f;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .project-link:hover {
+            color: #9ce72e;
+        }
+        .live-demo {
+            background: #00a900;
+            color: white;
+            text-decoration: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .live-demo:hover {
+            background: #9ce72e;
+            color: #24292f;
+        }
+.language-badge {
+            font-size: 0.75rem;
+            color: #57606a;
+            background: #eff1f3;
+            padding: 0.125rem 0.5rem;
+            border-radius: 1em;
+        }
+        @media (max-width: 600px) {
+            .project-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="center">
-<img src = "logo.png"/>
-</div>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="kiwiprojekt" class="logo">
+        </header>
+
+        <div class="projects">
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="project-header">
+                        <a href="https://github.com/kiwiprojekt/play" class="project-name">play</a>
+                        <a href="https://play.kiwiprojekt.pl" class="live-demo" target="_blank">play.kiwiprojekt.pl</a>
+                    </div>
+                    <p class="project-description">A few simple browser games for kids.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/kiwiprojekt/play" class="project-link" target="_blank">Source Code</a>
+                        <span class="language-badge">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <div class="project-header">
+                        <a href="https://github.com/kiwiprojekt/crossword-maker" class="project-name">crossword-maker</a>
+                        <a href="https://crossword.kiwiprojekt.pl" class="live-demo" target="_blank">crossword.kiwiprojekt.pl</a>
+                    </div>
+                    <p class="project-description">Small browser app for building crossword grids with a hidden answer and one or more dictionaries.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/kiwiprojekt/crossword-maker" class="project-link" target="_blank">Source Code</a>
+                        <span class="language-badge">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <a href="https://github.com/kiwiprojekt/tourbox" class="project-name">tourbox</a>
+                    <p class="project-description">Small library to read actions from TourBox controller by serial port.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/kiwiprojekt/tourbox" class="project-link" target="_blank">Source Code</a>
+                        <a href="https://www.nuget.org/packages/kiwiprojekt.tourbox/" class="project-link" target="_blank">NuGet</a>
+                        <span class="language-badge">C#</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <a href="https://github.com/kiwiprojekt/frameio-grabber" class="project-name">frameio-grabber</a>
+                    <p class="project-description">Quick and dirty console app to download and delete assets from frame.io.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/kiwiprojekt/frameio-grabber" class="project-link" target="_blank">Source Code</a>
+                        <a href="https://github.com/kiwiprojekt/frameio-grabber/releases" class="project-link" target="_blank">Releases</a>
+                        <span class="language-badge">C#</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
