@@ -365,15 +365,6 @@ const VBFRow = ({ p, i, onOpen }) => {
 
 /* ===================== app ===================== */
 
-const TWEAK_DEFAULTS = { accent: "lime", density: "comfortable" };
-
-const ACCENTS = {
-  lime:   { name:"Kiwi lime", accent:"oklch(0.82 0.18 132)", accentDeep:"oklch(0.58 0.14 138)", accentSoft:"oklch(0.93 0.09 125)" },
-  sage:   { name:"Sage",      accent:"oklch(0.78 0.10 142)", accentDeep:"oklch(0.52 0.08 146)", accentSoft:"oklch(0.92 0.05 140)" },
-  citrus: { name:"Citrus",    accent:"oklch(0.88 0.18 105)", accentDeep:"oklch(0.62 0.15 98)",  accentSoft:"oklch(0.95 0.09 102)" },
-  forest: { name:"Forest",    accent:"oklch(0.62 0.13 152)", accentDeep:"oklch(0.42 0.10 152)", accentSoft:"oklch(0.90 0.06 148)" },
-  ink:    { name:"Ink",       accent:"oklch(0.30 0.02 140)", accentDeep:"oklch(0.18 0.01 140)", accentSoft:"oklch(0.92 0.01 140)" },
-};
 
 const FONT_TECH = {
   display: "'JetBrains Mono', ui-monospace, monospace",
@@ -381,50 +372,13 @@ const FONT_TECH = {
   mono: "'JetBrains Mono', ui-monospace, monospace",
 };
 
-function useTweaks() {
-  const [tweaks, setTweaks] = useState(() => {
-    try { const s = JSON.parse(localStorage.getItem("kp-tweaks-fancy")||"null"); return {...TWEAK_DEFAULTS,...(s||{})}; }
-    catch { return {...TWEAK_DEFAULTS}; }
-  });
-  const update = useCallback((patch) => {
-    setTweaks(prev => { const next={...prev,...patch}; try{localStorage.setItem("kp-tweaks-fancy",JSON.stringify(next));}catch{} return next; });
-  }, []);
-  return [tweaks, update];
-}
-
-const TweaksPanel = ({ tweaks, update, onClose }) => (
-  <div className="kp-tweaks" role="dialog" aria-label="Tweaks">
-    <div className="kp-tweaks-head">
-      <span>Tweaks</span>
-      <button onClick={onClose} aria-label="close"><Icon.close/></button>
-    </div>
-    <div className="kp-tweak">
-      <label>Accent</label>
-      <div className="kp-tweak-accents">
-        {Object.entries(ACCENTS).map(([k,v]) => (
-          <button key={k} title={v.name} className={"kp-tweak-swatch"+(tweaks.accent===k?" is-on":"")} style={{background:v.accent}} onClick={()=>update({accent:k})}/>
-        ))}
-      </div>
-    </div>
-    <div className="kp-tweak">
-      <label>Density</label>
-      <div className="kp-tweak-seg">
-        {[["compact","Compact"],["comfortable","Comfortable"],["airy","Airy"]].map(([k,name]) => (
-          <button key={k} className={"kp-tweak-seg-btn"+(tweaks.density===k?" is-on":"")} onClick={()=>update({density:k})}>{name}</button>
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const TopBar = ({ theme, onToggleTheme, tweaksOpen, onToggleTweaks }) => (
+const TopBar = ({ theme, onToggleTheme }) => (
   <div className="kp-topbar">
     <div className="kp-topbar-left">
       <Logo size={28}/>
       <span className="kp-topbar-name">kiwiprojekt.pl</span>
     </div>
     <div className="kp-topbar-right">
-      <button className="kp-iconbtn" onClick={onToggleTweaks} aria-label="Tweaks" title="Tweaks"><Icon.settings/></button>
       <button className="kp-iconbtn" onClick={onToggleTheme} aria-label="Toggle theme">{theme==="light"?<Icon.moon/>:<Icon.sun/>}</button>
       <a className="kp-iconbtn" href="https://github.com/kiwiprojekt" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icon.github/></a>
     </div>
@@ -433,8 +387,6 @@ const TopBar = ({ theme, onToggleTheme, tweaksOpen, onToggleTweaks }) => (
 
 const App = () => {
   const [theme, toggleTheme] = useTheme();
-  const [tweaks, updateTweaks] = useTweaks();
-  const [tweaksOpen, setTweaksOpen] = useState(false);
   const [modalProj, setModalProj] = useState(null);
   const [projects, setProjects] = useState([]);
   const [source, setSource] = useState("loading");
@@ -453,24 +405,18 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const a = ACCENTS[tweaks.accent] || ACCENTS.lime;
     const r = document.documentElement;
-    r.style.setProperty("--accent", a.accent);
-    r.style.setProperty("--accent-deep", a.accentDeep);
-    r.style.setProperty("--accent-soft", a.accentSoft);
     r.style.setProperty("--font-display", FONT_TECH.display);
     r.style.setProperty("--font-body", FONT_TECH.body);
     r.style.setProperty("--font-mono", FONT_TECH.mono);
-    r.dataset.density = tweaks.density;
-  }, [tweaks]);
+  }, []);
 
   return (
     <>
-      <TopBar theme={theme} onToggleTheme={toggleTheme} tweaksOpen={tweaksOpen} onToggleTweaks={()=>setTweaksOpen(o=>!o)}/>
+      <TopBar theme={theme} onToggleTheme={toggleTheme}/>
       <main>
         <VariantBFancy onOpen={setModalProj} projects={projects} source={source} onRefetch={refetch}/>
       </main>
-      {tweaksOpen && <TweaksPanel tweaks={tweaks} update={updateTweaks} onClose={()=>setTweaksOpen(false)}/>}
       <ProjectModal project={modalProj} onClose={()=>setModalProj(null)}/>
     </>
   );
