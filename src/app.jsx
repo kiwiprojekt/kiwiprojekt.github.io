@@ -7,14 +7,14 @@ const EXCLUDE = new Set(["kiwiprojekt.github.io"]);
 
 
 
-function inferKind(repo) {
-  const txt = `${(repo.topics||[]).join(" ")} ${repo.description||""} ${repo.name}`.toLowerCase();
-  if (/library|sdk|package|binding/.test(txt)) return "library";
-  if (/cli|tool|utility|downloader|generator/.test(txt)) return "tool";
-  if (/app|game|player|site|dashboard|web/.test(txt)) return "app";
-  if (repo.language === "C#") return "library";
-  if (/HTML|JavaScript|TypeScript/.test(repo.language||"")) return "app";
-  return "library";
+function formatDate(dateStr) {
+  if (!dateStr) return "—";
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  } catch {
+    return "—";
+  }
 }
 
 function toProject(repo) {
@@ -24,7 +24,7 @@ function toProject(repo) {
     id: repo.name, name: repo.name,
     tagline: repo.description || "—",
     description: repo.description || "No description yet.",
-    tags, kind: inferKind(repo), year,
+    tags, year,
     stars: repo.stargazers_count || 0, forks: repo.forks_count || 0,
     language: repo.language || "—",
     highlight: repo.description || "",
@@ -139,7 +139,6 @@ const ProjectModal = ({ project, onClose }) => {
       <div className="kp-modal" onClick={e=>e.stopPropagation()} role="dialog" aria-modal="true">
         <button className="kp-modal-close" onClick={onClose} aria-label="Close"><Icon.close/></button>
         <div className="kp-modal-head">
-          <div className="kp-modal-kind">{p.kind}</div>
           <h2 className="kp-modal-title">{p.name}</h2>
           <p className="kp-modal-tagline">{p.tagline}</p>
           <div className="kp-modal-meta">
@@ -147,7 +146,7 @@ const ProjectModal = ({ project, onClose }) => {
             <span className="kp-dot-sep">·</span>
             <span><Icon.star style={{color:"var(--accent)",verticalAlign:"-2px"}}/> {p.stars.toLocaleString()}</span>
             <span className="kp-dot-sep">·</span>
-            <span>{p.year}</span>
+            <span>Updated {formatDate(p.updatedAt)}</span>
           </div>
         </div>
         <div className="kp-modal-body">
@@ -202,7 +201,6 @@ function useMouseGlow() {
 /* ===================== variant B fancy ===================== */
 
 const VariantBFancy = ({ onOpen, projects = [], source = "loading", onRefetch }) => {
-  const [filter, setFilter] = useState("all");
   const [q, setQ] = useState("");
   const [mouse, setMouse] = useState({ x: 50, y: 50 });
 
@@ -232,17 +230,9 @@ const VariantBFancy = ({ onOpen, projects = [], source = "loading", onRefetch })
   const allTyped = charCount >= TOTAL_CHARS;
 
   const filtered = useMemo(() => projects.filter(p => {
-    if (filter !== "all" && p.kind !== filter) return false;
     if (q && !(p.name.toLowerCase().includes(q.toLowerCase()) || p.tagline.toLowerCase().includes(q.toLowerCase()) || p.tags.join(" ").toLowerCase().includes(q.toLowerCase()))) return false;
     return true;
-  }), [projects, filter, q]);
-
-  const counts = useMemo(() => ({
-    all: projects.length,
-    library: projects.filter(p=>p.kind==="library").length,
-    tool: projects.filter(p=>p.kind==="tool").length,
-    app: projects.filter(p=>p.kind==="app").length,
-  }), [projects]);
+  }), [projects, q]);
 
   return (
     <div className="vbf-root"
@@ -308,14 +298,6 @@ const VariantBFancy = ({ onOpen, projects = [], source = "loading", onRefetch })
       </header>
 
       <div className="vbf-toolbar">
-        <div className="vbf-filters">
-          {["all","library","tool","app"].map(f => (
-            <button key={f} className={"vbf-filter"+(filter===f?" is-active":"")} onClick={()=>setFilter(f)}>
-              <span className="vbf-filter-label">{f}</span>
-              <span className="vb-count">{counts[f]}</span>
-            </button>
-          ))}
-        </div>
         <div className="vbf-search">
           <span className="vb-search-slash">/</span>
           <input placeholder="filter by name, tag, or keyword…" value={q} onChange={e=>setQ(e.target.value)}/>
@@ -324,7 +306,7 @@ const VariantBFancy = ({ onOpen, projects = [], source = "loading", onRefetch })
 
       <section className="vbf-table" role="table">
         <div className="vbf-thead" role="row">
-          <span>name</span><span>kind</span><span>lang</span>
+          <span>name</span><span>last updated</span><span>lang</span>
           <span className="vb-th-right">stars</span><span>tags</span><span>links</span>
         </div>
         {filtered.map((p,i) => <VBFRow key={p.id} p={p} i={i} onOpen={onOpen}/>)}
@@ -334,6 +316,7 @@ const VariantBFancy = ({ onOpen, projects = [], source = "loading", onRefetch })
       <footer className="vbf-footer">
         <span>// kiwiprojekt.pl</span>
         <span>→ <a href="https://github.com/kiwiprojekt" target="_blank" rel="noopener noreferrer">github.com/kiwiprojekt</a></span>
+        <span>→ <a href="privacy.html">privacy policy</a></span>
         <span>© 2026</span>
       </footer>
     </div>
@@ -349,7 +332,7 @@ const VBFRow = ({ p, i, onOpen }) => {
         <span className="vb-name-main">{p.name}</span>
         <span className="vb-name-sub">{p.tagline}</span>
       </span>
-      <span className="vb-cell vb-kind">{p.kind}</span>
+      <span className="vb-cell vb-updated">{formatDate(p.updatedAt)}</span>
       <span className="vb-cell"><LangDot lang={p.language}/></span>
       <span className="vb-cell vb-stars"><Icon.star/> {p.stars.toLocaleString()}</span>
       <span className="vb-cell vb-tags">{p.tags.map(t=><span key={t} className="vb-tag">{t}</span>)}</span>

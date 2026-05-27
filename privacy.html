@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — kiwiprojekt.pl</title>
+  <link rel="stylesheet" href="src/styles.css" />
+  <style>
+    .privacy-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+      font-family: var(--font-body);
+      line-height: 1.7;
+    }
+    .privacy-back {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-deep);
+      margin-bottom: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .privacy-back:hover {
+      text-shadow: 0 0 10px color-mix(in oklab, var(--accent) 60%, transparent);
+    }
+    .privacy-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .privacy-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      margin-bottom: 48px;
+    }
+    .privacy-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 40px;
+      background: color-mix(in oklab, var(--bg-panel) 88%, transparent);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 50px -25px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    .privacy-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, var(--accent) 8%, transparent) 50%, transparent 70%);
+      background-size: 200% 200%;
+      pointer-events: none;
+      border-radius: 14px;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      color: var(--fg);
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 8px;
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    p {
+      color: var(--fg-dim);
+      margin-bottom: 16px;
+    }
+    ul {
+      color: var(--fg-dim);
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: var(--bg-2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-soft);
+      color: var(--accent-deep);
+    }
+    a {
+      color: var(--accent-deep);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    a:hover {
+      color: var(--accent);
+    }
+  </style>
+  <script>
+    // Sync theme with main app settings
+    try {
+      const theme = localStorage.getItem("kp-theme") || "light";
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="vbf-bg" aria-hidden="true">
+    <div class="vbf-bg-grid"></div>
+    <div class="vbf-bg-spot"></div>
+    <div class="vbf-bg-noise"></div>
+  </div>
+
+  <div class="privacy-container">
+    <a href="./" class="privacy-back">← [ back to home ]</a>
+    <div class="privacy-card">
+      <h1 class="privacy-title">Privacy Policy</h1>
+      <div class="privacy-subtitle">// Last updated: May 2026</div>
+
+      <h2>1. Overview</h2>
+      <p>
+        This website (<code>kiwiprojekt.pl</code>) is a static landing page displaying public open-source projects hosted by the <strong>kiwiprojekt</strong> GitHub organization. We value your privacy and aim to keep data collection to an absolute minimum.
+      </p>
+
+      <h2>2. Data Collection & Processing</h2>
+      <p>
+        As the maintainers of this website, we do not directly collect, store, or process any personal data, nor do we run cookies, trackers, or marketing analytics. 
+      </p>
+      <p>
+        However, because the website is hosted on the internet, connection data must be processed technically by hosting and utility providers:
+      </p>
+      <ul>
+        <li>
+          <strong>Hosting (GitHub Pages):</strong> This website is hosted using GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). When you visit the site, GitHub automatically collects and processes connection metadata (including your IP address, browser type, referrer, and timestamps) in server logs to ensure secure and reliable delivery of the pages. For details, please review the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a>.
+        </li>
+        <li>
+          <strong>External Libraries (unpkg.com):</strong> To run the interactive elements of this static page, scripts (React and Babel Standalone) are retrieved dynamically from <code>unpkg.com</code> (mPn Trend S.L.). When your browser requests these resources, your IP address is visible to the service.
+        </li>
+      </ul>
+
+      <h2>3. Self-Hosted Fonts</h2>
+      <p>
+        To prevent tracking by third-party search engines and CDNs, all font assets (including <em>Fraunces</em>, <em>IBM Plex Sans</em>, and <em>JetBrains Mono</em>) are **fully self-hosted** on our own server space. No connections or requests are made to external Google Fonts CDNs.
+      </p>
+
+      <h2>4. Cookies</h2>
+      <p>
+        This website does not use cookies, web beacons, pixels, or other tracking technologies. There are no tracking mechanisms that store data on your device.
+      </p>
+
+      <h2>5. Your Rights</h2>
+      <p>
+        Under the GDPR, you have the right to access, rectify, or erase any personal data processed in connection with this site. Since we do not store any personal data, please contact the hosting provider (GitHub) for inquiries regarding server logs.
+      </p>
+
+      <h2>6. Contact</h2>
+      <p>
+        If you have any questions about this Privacy Policy, please open an issue or reach out via our public GitHub organization profile: <a href="https://github.com/kiwiprojekt" target="_blank" rel="noopener noreferrer">github.com/kiwiprojekt</a>.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
