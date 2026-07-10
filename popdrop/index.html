@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PopDrop — Fast, local file transfers for Mac</title>
+  <meta name="description" content="No accounts, no cloud sync, and no apps to install on your phone. Just open PopDrop on your Mac, scan the QR code, and drop your files directly over Wi-Fi.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PopDrop Logo" class="nav-logo-img">
+        PopDrop
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Overview</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="https://apps.apple.com/app/popdrop" class="nav-cta">Mac App Store</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Fast, local file transfers between your Mac and anything on your network.</h1>
+    <p>No accounts, no cloud sync, and no apps to install on your phone. Just open PopDrop on your Mac, scan the QR code (or open the local link), and drop your files.</p>
+    <div class="hero-actions">
+      <a href="https://apps.apple.com/app/popdrop" class="btn-primary">
+        <span></span> Download on the Mac App Store
+      </a>
+      <a href="#why" class="btn-secondary">Learn More</a>
+    </div>
+  </section>
+
+  <div class="hero-preview">
+    <img src="screenshot.png" alt="PopDrop interface showing the QR code and recent transfers">
+  </div>
+
+  <section id="why" class="section">
+    <div class="section-header">
+      <h2>Why I built this</h2>
+      <p>Sending a quick photo or file from an Android phone, a work laptop, or a tablet to a Mac usually means emailing it to yourself, uploading it to Google Drive or iCloud, or dealing with broken Bluetooth connections. PopDrop runs a lightweight local web server on your Mac. If your phone or computer is on the same Wi-Fi or Ethernet network, it can upload files directly to your Mac's Downloads folder in seconds.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Works with any device</h3>
+        <p>If it has a web browser (iPhone, Android, Windows, Linux, tablet), it can send files to your Mac without installing client software.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>QR code or direct link</h3>
+        <p>Click the PopDrop icon in your menu bar to show an instant QR code. Scan it with your phone's camera, or copy the local address (http://192.168.x.x:8080) to share with another computer on your network.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Strictly local and private</h3>
+        <p>Files go straight from the sending device to your Mac's hard drive over your local router. Nothing ever touches the internet or third-party cloud servers.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Retro and old device fallback</h3>
+        <p>Trying to get photos off an old classic phone, an e-reader, or an ancient browser? PopDrop includes a plain-HTML fallback form (/legacy) that works cleanly even without modern JavaScript.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>No logins or setup</h3>
+        <p>Open the app and start receiving files immediately. No accounts, passwords, or subscriptions.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Native macOS utility</h3>
+        <p>Built specifically for macOS. You can set file size limits, pick a custom save directory, or configure it to launch automatically at login.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>How to use it</h2>
+      <p>Three steps. No friction.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Launch PopDrop</h3>
+        <p>It runs quietly in your Mac's menu bar. Click the icon anytime to view your status panel and QR code.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Scan or Copy Link</h3>
+        <p>Point your phone's camera at the QR code, or open the local IP address on any other device connected to your network.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Drop your files</h3>
+        <p>Select your photos, videos, or documents on your phone. They arrive instantly inside your Mac's Downloads folder.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        PopDrop by Michał Sadurski (KiwiProjekt)
+        <span>© 2026 Michał Sadurski. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Overview</a>
+        <a href="support.html">Support & FAQ</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://github.com/kiwiprojekt/kiwiprojekt.github.io/issues" target="_blank" rel="noopener">Issues & Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support & FAQ — PopDrop</title>
+  <meta name="description" content="Get help with PopDrop, troubleshoot Wi-Fi/Ethernet network connections, learn about legacy device support, or contact the developer directly.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PopDrop Logo" class="nav-logo-img">
+        PopDrop
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="support.html" class="active">Support</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="https://apps.apple.com/app/popdrop" class="nav-cta">Mac App Store</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Support & Frequently Asked Questions</h1>
+      <p>Quick answers on Wi-Fi setup, firewall permissions, and legacy devices.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-card">
+        <h3>1. Why won't the QR code load on my phone when I scan it?</h3>
+        <p>Both your phone and your Mac must be connected to the exact same Wi-Fi or Ethernet network.</p>
+        <ul>
+          <li>Check that your phone hasn't dropped Wi-Fi and switched to cellular data (4G/5G).</li>
+          <li>If your Mac runs a third-party firewall (like Little Snitch or LuLu), make sure it allows incoming local connections on port <code>8080</code>.</li>
+          <li>Some public or "Guest" Wi-Fi networks block devices from talking to each other directly (client isolation). If so, use your main home/office network or a personal mobile hotspot.</li>
+        </ul>
+      </div>
+
+      <div class="faq-card">
+        <h3>2. Does PopDrop need internet access?</h3>
+        <p>No. Everything happens over your local router. You could unplug your modem from the wall, and as long as your Wi-Fi router is powered on and connecting your local devices, PopDrop will transfer files at full network speed.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3>3. Where are my files saved?</h3>
+        <p>By default, PopDrop creates a folder inside your Mac's Downloads directory: <code>~/Downloads/PopDrop</code>.</p>
+        <p style="margin-top: 0.5rem;">You can change this anytime by clicking the PopDrop menu bar icon → <strong>Settings</strong> → <strong>Change</strong> next to <em>Save to</em>.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3>4. What if I'm trying to send files from an old device?</h3>
+        <p>If you're using an older device (like a classic phone, e-reader, or basic terminal) where modern JavaScript doesn't load cleanly, PopDrop automatically falls back to <code>/legacy</code>. This is a plain-HTML form that works on almost any browser ever made. You can also visit <code>http://YOUR_MAC_IP:8080/legacy</code> manually anytime.</p>
+      </div>
+
+      <div class="faq-card" style="margin-top: 1.5rem; background: var(--color-surface-muted); border-color: var(--color-border-subtle);">
+        <h3>Need more help or found a bug?</h3>
+        <p>If your issue isn't resolved by the FAQ above or you'd like to request a feature, open an issue directly on GitHub at <a href="https://github.com/kiwiprojekt/kiwiprojekt.github.io/issues" target="_blank" rel="noopener" style="font-weight: 600;">kiwiprojekt.github.io/issues</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        PopDrop by Michał Sadurski (KiwiProjekt)
+        <span>© 2026 Michał Sadurski. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Overview</a>
+        <a href="support.html">Support & FAQ</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://github.com/kiwiprojekt/kiwiprojekt.github.io/issues" target="_blank" rel="noopener">Issues & Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

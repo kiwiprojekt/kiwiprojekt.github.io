@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — PopDrop</title>
+  <meta name="description" content="PopDrop does not collect, track, or transmit any user data. Read our plain-English privacy declaration and macOS sandbox explanations.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="PopDrop Logo" class="nav-logo-img">
+        PopDrop
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="privacy.html" class="active">Privacy</a></li>
+        <li><a href="https://apps.apple.com/app/popdrop" class="nav-cta">Mac App Store</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: July 10, 2026</p>
+    </div>
+
+    <div class="content-block">
+      <p style="font-size: 1.15rem; font-weight: 600; color: var(--color-text); margin-bottom: 2rem;">
+        PopDrop does not collect, track, or transmit any user data. Period.
+      </p>
+
+      <h2>1. No Data Collection</h2>
+      <p>PopDrop does not use analytics, crash reporters, advertising SDKs, or tracking scripts. We don't know who you are, what files you transfer, or when you use the app. There are no user accounts, sign-ups, or external databases.</p>
+
+      <h2>2. No Cloud Servers</h2>
+      <p>All file transfers happen locally over your own Wi-Fi or Ethernet network. When someone sends a file to your Mac using PopDrop, the data travels directly between those two devices inside your local network. It never crosses the internet or touches any cloud storage.</p>
+
+      <h2>3. Why PopDrop asks for macOS permissions</h2>
+      <p>To work correctly, Apple requires PopDrop to declare specific system permissions in its sandbox:</p>
+      <ul>
+        <li><strong>Local Network Access (com.apple.security.network.server):</strong> PopDrop runs a small local HTTP server on port 8080 so other devices on your local network can connect and upload files.</li>
+        <li><strong>Downloads Folder Access (com.apple.security.files.downloads.read-write):</strong> Incoming files are saved directly to your local ~/Downloads/PopDrop folder. PopDrop only writes new files you receive; it doesn't scan or upload your existing files.</li>
+        <li><strong>Custom Folder Access (com.apple.security.files.user-selected.read-write):</strong> If you change your download folder in Settings, macOS grants PopDrop permission to write to that specific folder you selected.</li>
+      </ul>
+
+      <h2>4. Issues & Support</h2>
+      <p>If you have any questions about this policy or how PopDrop works locally, you can open an issue directly at <a href="https://github.com/kiwiprojekt/kiwiprojekt.github.io/issues" target="_blank" rel="noopener">kiwiprojekt.github.io/issues</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        PopDrop by Michał Sadurski (KiwiProjekt)
+        <span>© 2026 Michał Sadurski. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Overview</a>
+        <a href="support.html">Support & FAQ</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://github.com/kiwiprojekt/kiwiprojekt.github.io/issues" target="_blank" rel="noopener">Issues & Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
